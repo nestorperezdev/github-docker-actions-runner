@@ -1,5 +1,5 @@
 # base
-FROM ubuntu:18.04
+FROM ubuntu:22.10
 
 # set the github runner version
 ARG RUNNER_VERSION="2.294.0"
@@ -21,7 +21,8 @@ RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
 RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
 
 # install git
-RUN apt-get -y update
+RUN apt-get update && \
+    apt-get upgrade -y
 RUN apt-get -y install git
 
 # copy over the start.sh script
