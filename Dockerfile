@@ -20,6 +20,10 @@ RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
 # install some additional dependencies
 RUN chown -R docker ~docker && /home/docker/actions-runner/bin/installdependencies.sh
 
+# install git
+RUN apt-get -y update
+RUN apt-get -y install git
+
 # copy over the start.sh script
 COPY start.sh start.sh
 
